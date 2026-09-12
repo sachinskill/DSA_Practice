@@ -1,16 +1,14 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int i=0, j=1, result=0;
-        while(j<prices.length){
-            if(prices[i]<prices[j] && prices[j]>prices[j-1]){
-                result+=prices[j]-prices[i];
-                j++;
-                i++;
-            }else{
-                i=j;
-                j++;
+        int maxProfit = 0;
+        
+        for (int i = 1; i < prices.length; i++) {
+            // Agar aaj ka price kal se jyada hai, toh profit add karo
+            if (prices[i] > prices[i - 1]) {
+                maxProfit += prices[i] - prices[i - 1];
             }
         }
-        return result;
+        
+        return maxProfit;
     }
 }
