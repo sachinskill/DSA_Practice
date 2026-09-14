@@ -1,15 +1,17 @@
 class Solution {
     public int hIndex(int[] citations) {
        Arrays.sort(citations);
-       int max=0;
-       for(int i=citations.length-1; i>=0; i--){
-        int count=citations.length-i;
-        if(citations[i]>=count){
-            max=count;
-        }else{
-            break;
-        }      
+        int maxHIndex = 0;
+        int totalPapers = citations.length;
+       for (int i = totalPapers - 1; i >= 0; i--){
+            int paperCount = totalPapers - i; 
+            int currentPaperCitations = citations[i];
+        if (currentPaperCitations >= paperCount) {
+                maxHIndex = paperCount; 
+            } else {
+                break; 
+            }         
        }
-       return max;
+       return maxHIndex;
     }
 }
